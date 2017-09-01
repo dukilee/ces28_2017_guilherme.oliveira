@@ -23,8 +23,7 @@ import sistema.VerificadorCPF;
 
 public class Teste {
 	private Cliente cliente1;
-	private Cliente cliente2;
-	private Cliente cliente3;
+	private Cliente cliente2;//cpf invalido
 	@Mock private VerificadorCPF verificador;
 	@Mock private BDCliente bdCliente;
 
@@ -38,7 +37,6 @@ public class Teste {
 	public void setUp() throws Exception {
 		cliente1 = new Cliente(1);
 		cliente2 = new Cliente(2);
-		cliente3 = new Cliente(3);
 		bdCliente = Mockito.mock(BDCliente.class);
 		verificador = Mockito.mock(VerificadorCPF.class);
 		Mockito.when(verificador.verifica(1)).thenReturn(true);
@@ -53,7 +51,9 @@ public class Teste {
 		Mockito.when(bdProdutos.contem(p)).thenReturn(true);
 		Mockito.when(bdProdutos.contem(p2)).thenReturn(true);
 		Mockito.when(bdProdutos.contem(s)).thenReturn(true);
-		Mockito.when(bdProdutos.contem(s2)).thenThrow(new SemItensException());   
+		Mockito.when(bdProdutos.contem(s2)).thenThrow(
+				new ItemInexistenteException("Produto nao foi adicionado ao BDProdutos")); 
+		
 		notaFiscal = new NotaFiscal(cliente1, 2002, p, bdProdutos);
 	}
 	
@@ -149,8 +149,8 @@ public class Teste {
 		}
 	}
 	
-	@Test(expected = NullPointerException.class)
-	public void inexistingProduct() throws NullPointerException{
+	@Test(expected = ItemInexistenteException.class)
+	public void inexistingProduct() throws ItemInexistenteException{
 		notaFiscal.addItem(s2);
 	}
 	
