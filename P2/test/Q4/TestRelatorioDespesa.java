@@ -1,0 +1,67 @@
+package Q4;
+
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
+
+import java.util.ArrayList;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.Mockito;
+
+import Q4.orig.Calculadora;
+import Q4.orig.Despesa;
+import Q4.orig.RelatorioDespesas;
+
+public class TestRelatorioDespesa {
+	RelatorioDespesas relatorioDespesas;
+	ArrayList<Despesa> listaBasica, listaUnitaria, listaVazia;
+	
+	@Before
+	public void setUp(){
+		relatorioDespesas = new RelatorioDespesas();
+		
+		listaBasica = new ArrayList<Despesa>();
+		listaBasica.add(new Despesa(2));
+		listaBasica.add(new Despesa(3));
+		listaBasica.add(new Despesa(7.2f));
+		
+		listaUnitaria = new ArrayList<Despesa>();
+		listaUnitaria.add(new Despesa(9.1f));
+		
+		listaVazia = new ArrayList<Despesa>();
+	}
+	
+	
+	@Test
+	public void testCalculadora(){
+		Calculadora calculadora = new Calculadora();
+		
+		float totalBasico = calculadora.calculaTotal(listaBasica.iterator());
+		assertTrue(totalBasico == 12.2f);
+	
+		float totalUnitario = calculadora.calculaTotal(listaUnitaria.iterator());
+		assertTrue(totalUnitario == 9.1f);
+		
+		float totalVazio = calculadora.calculaTotal(listaVazia.iterator());
+		assertTrue(totalVazio == 0f);
+	}
+	
+	@Test
+	public void testaOCalculoDoValorTotal(){
+		String conteudo1 = relatorioDespesas.formaConteudo(7.5f);
+		assertEquals(conteudo1, "Relat�rio de Despesas\n Total das despesas:7.5");
+
+		String conteudo2 = relatorioDespesas.formaConteudo(0.0f);
+		assertEquals(conteudo2, "Relat�rio de Despesas\n Total das despesas:0.0");
+	}
+	
+	@Test
+	public void testaImprimirRelatorio(){
+		relatorioDespesas.ImprimirRelatorio(listaBasica.iterator());
+		relatorioDespesas.ImprimirRelatorio(listaUnitaria.iterator());
+		relatorioDespesas.ImprimirRelatorio(listaVazia.iterator());
+		
+	}
+
+}
