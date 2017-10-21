@@ -1,0 +1,7 @@
+package lab;
+
+public abstract class Builder {
+	public abstract Letter constructLetter(Languages language, Person sender, Person destinatary,
+			Address addressSender, Address addressDestiny, Date date,
+			Photo photo, String message);
+}

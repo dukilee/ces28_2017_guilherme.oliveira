@@ -1,0 +1,25 @@
+package ex1;
+
+public abstract class Letter {
+	public Letter(Person sender, Person destinatary, Address addressSender,
+			Address addressDestiny, Date date){
+		this.sender = new Person(sender.getName());
+		this.destinatary = new Person(destinatary.getName());
+		this.addressSender = new Address(addressSender.getValue());
+		this.addressDestiny = new Address(addressDestiny.getValue());
+		this.date = new Date(date);
+	}
+
+	public abstract String model();
+	
+
+	protected String conclusion(){
+		return "";
+	}
+	
+	protected Person sender;
+	protected Person destinatary;
+	protected Address addressSender;
+	protected Address addressDestiny;
+	protected Date date;
+}

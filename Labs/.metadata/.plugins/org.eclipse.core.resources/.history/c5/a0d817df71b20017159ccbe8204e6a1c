@@ -1,0 +1,34 @@
+package letterElements;
+
+public abstract class Person {
+	public Person(Person other){
+		firstName = other.getFirstName();
+		lastName = other.getLastName();
+	}
+	
+	public Person(String firstName, String lastName){
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.language = Languages.ENGLISH;
+	}
+	
+	public abstract String getNameFormal();
+	
+	public abstract String getNameInformal();
+	
+	public String getFirstName(){
+		return firstName;
+	}
+	
+	public String getLastName(){
+		return lastName;
+	}
+	
+	public void setLanguage(Languages language){
+		this.language = language;
+	}
+	
+	protected String firstName;
+	protected String lastName;
+	private Languages language;
+}

@@ -1,0 +1,40 @@
+package ex1;
+
+public class Person {
+	public Person(Person other){
+		firstName = other.getFirstName();
+		lastName = other.getLastName();
+	}
+	
+	public Person(String firstName, String lastName){
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.language = Languages.ENGLISH;
+	}
+	
+	public String getName(){
+		if(language == Languages.PORTUGUESE)
+			return firstName + " " + lastName;
+		if(language == Languages.JAPONESE)
+			return lastName + "-san";
+		
+		//is english by default
+		return lastName + ", " + firstName;
+	}
+	
+	public String getFirstName(){
+		return firstName;
+	}
+	
+	public String getLastName(){
+		return lastName;
+	}
+	
+	public void setLanguage(Languages language){
+		this.language = language;
+	}
+	
+	private String firstName;
+	private String lastName;
+	private Languages language;
+}

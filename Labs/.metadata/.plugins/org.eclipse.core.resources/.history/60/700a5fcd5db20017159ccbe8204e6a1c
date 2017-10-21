@@ -1,0 +1,23 @@
+package ex1;
+
+public class FriendLetter extends Letter{
+
+	public FriendLetter(Person sender, Person destinatary,
+			Address addressSender, Address addressDestiny, Date date) {
+		super(sender, destinatary, addressSender, addressDestiny, date);
+	}
+	
+	protected String header(){
+		return sender.getName() + "\n" +
+					addressSender.getValue() + "\n" + destinatary.getName() +
+					"\n" + addressDestiny.getValue() + "\n";
+	}
+	
+	protected String body(){
+		return "\nHey, "+destinatary.getName()+"\n";
+	}
+	
+	protected String signature(){
+		return "\nSee ya\n"+date.toPrint()+"\n";
+	}
+}

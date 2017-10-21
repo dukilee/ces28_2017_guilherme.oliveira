@@ -1,0 +1,79 @@
+package ex1;
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+
+public class TestEx2 {
+	Address address1;
+	Address address2;
+	Date date;
+	Person person1;
+	Person person2;
+	Photo photo;
+	String m;
+	
+	@Before
+	public void setUp(){
+		address1 = new Address("Rua Astolfo Pinho, 422");
+		address2 = new Address("Av. Rodrigo Sampaio, 21");
+		date = new Date(12,20,2012);
+		person1 = new Person("Abelardo", "Barbosa");
+		person2 = new Person("Silvio", "Santos");
+		photo = new HeartPhoto();
+		m = "Love you";
+	}
+	
+	@Test
+	public void testFriendLetterInPortuguese() {
+		Languages lan = Languages.PORTUGUESE;
+		Writer w = new Writer(new FriendBuilder());
+		Letter cl = w.writeLetter(lan, person1, person2, address1, address2, date);
+		assertEquals(cl.model(), "Sr. Abelardo Barbosa\n"+
+								"Rua Astolfo Pinho, 422\n"+
+								"Sr. Silvio Santos\n"+
+								"Av. Rodrigo Sampaio, 21\n"+
+								"\n"+
+								"Hey, Silvio\n"+
+								"\n"+
+								"See ya\n"+
+								"20/12/2012\n");
+
+	}
+
+
+	@Test
+	public void testFriendLetterInJaponsese() {
+		Languages lan = Languages.JAPONESE;
+		Writer w = new Writer(new FriendBuilder());
+		Letter cl = w.writeLetter(lan, person1, person2, address1, address2, date);
+		assertEquals(cl.model(), "Barbosa-san\n"+
+								"Rua Astolfo Pinho, 422\n"+
+								"Santos-san\n"+
+								"Av. Rodrigo Sampaio, 21\n"+
+								"\n"+
+								"Hey, Santos\n"+
+								"\n"+
+								"See ya\n"+
+								"2012/12/20\n");
+		
+	}
+	@Test
+	public void testFriendLetterInEnglish() {
+		Languages lan = Languages.ENGLISH;
+		Writer w = new Writer(new FriendBuilder());
+		Letter cl = w.writeLetter(lan, person1, person2, address1, address2, date);
+		assertEquals(cl.model(), "Mr. Barbosa, Abelardo\n"+
+								"Rua Astolfo Pinho, 422\n"+
+								"Mr. Santos, Silvio\n"+
+								"Av. Rodrigo Sampaio, 21\n"+
+								"\n"+
+								"Hey, Silvio\n"+
+								"\n"+
+								"See ya\n"+
+								"12/20/2012\n");
+
+	}
+	
+}

@@ -1,0 +1,86 @@
+package ex1;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+public class TestEx1 {
+	Address a1;
+	Address a2;
+	Date d;
+	Person p1;
+	Person p2;
+	Photo pho;
+	String m;
+	Languages lan;
+	
+	@Before
+	public void setUp(){
+		a1 = new Address("Rua Astolfo Pinho, 422");
+		a2 = new Address("Av. Rodrigo Sampaio, 21");
+		d = new Date(20,12,2012);
+		p1 = new Person("Abelardo", "Barbosa");
+		p2 = new Person("Silvio", "Santos");
+		pho = new HeartPhoto();
+		m = "Love you";
+		lan = Languages.PORTUGUESE;
+	}
+	
+	@Test
+	public void testForCommercial() {
+		Writer w = new Writer(new ComercialBuilder());
+		Letter cl = w.writeLetter(lan, p1, p2, a1, a2, d);
+		assertEquals(cl.model(), "12/20/2012\n"+
+								"\n"+
+								"Sr. Abelardo Barbosa\n"+
+								"Rua Astolfo Pinho, 422\n"+
+								"Sr. Silvio Santos\n"+
+								"Av. Rodrigo Sampaio, 21\n"+
+								"\n"+
+								"Dear Silvio\n"+
+								"\n"+
+								"Sincerely\n"+
+								"\n"+
+								"                     _________________\n"+
+								"                     Sr. Abelardo Barbosa\n");
+	}
+	
+
+	@Test
+	public void testForFriend() {
+		Writer w = new Writer(new FriendBuilder());
+		Letter cl = w.writeLetter(lan, p1, p2, a1, a2, d);
+		assertEquals(cl.model(), "Sr. Abelardo Barbosa\n"+
+				"Rua Astolfo Pinho, 422\n"+
+				"Sr. Silvio Santos\n"+
+				"Av. Rodrigo Sampaio, 21\n"+
+				"\n"+
+				"Hey, Silvio\n"+
+				"\n"+
+				"See ya\n"+
+				"12/20/2012\n");
+	}
+	
+
+	@Test
+	public void testForPostCard() {
+		Writer w = new Writer(new PostCardBuilder());
+		Letter cl = w.writeLetter(lan, p1, p2, a1, a2, d);
+		System.out.print(cl.model());
+		assertEquals(cl.model(), "12/20/2012\n"+
+								"\n"+
+								"Sr. Abelardo Barbosa\n"+
+								"Rua Astolfo Pinho, 422\n"+
+								"Sr. Silvio Santos\n"+
+								"Av. Rodrigo Sampaio, 21\n"+
+								"\n"+
+								"Dear Silvio\n"+
+								"\n"+
+								"Sincerely\n"+
+								"\n"+
+								"                     _________________\n"+
+								"                     Sr. Abelardo Barbosa\n");
+	}
+
+}

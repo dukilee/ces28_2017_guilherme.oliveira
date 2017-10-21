@@ -1,0 +1,14 @@
+package builders;
+
+import letterElements.Address;
+import letterElements.Date;
+import letterElements.Languages;
+import letterElements.Photo;
+import letterElements.persons.Person;
+import letters.Letter;
+
+public abstract class Builder {
+	public abstract Letter constructLetter(Languages language, Person sender, Person destinatary,
+			Address addressSender, Address addressDestiny, Date date,
+			Photo photo, String message);
+}

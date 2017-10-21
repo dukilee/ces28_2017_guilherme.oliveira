@@ -1,0 +1,23 @@
+package ex1;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class TestEx1 {
+
+	@Test
+	public void test() {
+		Address a = new Address("Segundo tenente renato ometi, 177");
+		Address a2 = new Address("Rua H8B, 206");
+		Date d = new Date(5, 20, 1995);
+		Person p1 = new Person("Guilherme", "Oliveira");
+		Person p2 = new Person("mano", "AB");
+		Photo p = new HeartPhoto();
+		String m = "Love you";
+		Writer w = new Writer(new PostCardBuilder());
+		Letter cl = w.writeLetter(p1, p2, a, a2, d, p, m);
+		System.out.print(cl.model());
+	}
+
+}

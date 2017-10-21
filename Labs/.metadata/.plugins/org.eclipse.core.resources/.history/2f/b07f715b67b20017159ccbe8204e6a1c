@@ -1,0 +1,23 @@
+package builders;
+
+import letterElements.Address;
+import letterElements.Date;
+import letterElements.Languages;
+import letterElements.Photo;
+import letterElements.persons.Person;
+import letters.Letter;
+import letters.PostCardLetter;
+
+public class PostCardBuilder extends Builder{
+
+	@Override
+	public Letter constructLetter(Languages language, Person sender, Person destinatary,
+			Address addressSender, Address addressDestiny, Date date,
+			Photo photo, String message) {
+		Letter l = new PostCardLetter(sender, destinatary, addressSender, addressDestiny,
+					date, photo, message);
+		l.setLanguage(language);
+		return l;
+	}
+
+}

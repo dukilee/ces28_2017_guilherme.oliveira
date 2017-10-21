@@ -1,0 +1,13 @@
+package ex1;
+
+public class PostCardBuilder extends Builder{
+
+	@Override
+	public Letter constructLetter(Languages languages, Person sender, Person destinatary,
+			Address addressSender, Address addressDestiny, Date date,
+			Photo photo, String message) {
+		return new PostCardLetter(sender, destinatary, addressSender, addressDestiny,
+					date, photo, message);
+	}
+
+}

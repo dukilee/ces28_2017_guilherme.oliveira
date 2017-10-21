@@ -1,0 +1,58 @@
+package letters;
+
+import letterElements.Address;
+import letterElements.Date;
+import letterElements.Languages;
+import letterElements.Person;
+import letterElements.AbstractFactory;
+
+public abstract class Letter {
+	public Letter(Person sender, Person destinatary, Address addressSender,
+			Address addressDestiny, Date date){
+		//using english as default language
+		AbstractFactory factory = AbstractFactory.getFactory(Languages.ENGLISH);
+		this.sender = factory.createPerson(sender);
+//		this.destinatary = factory.createPerson(destinatary);
+//		this.addressSender = factory.createAddress(addressSender);
+		
+		this.addressSender = new Address(addressSender.getValue());
+		this.addressDestiny = new Address(addressDestiny.getValue());
+		this.date = new Date(date);
+	}
+	
+	public void setLanguage(Languages language){
+//		this.sender.setLanguage(language);
+//		this.destinatary.setLanguage(language);
+//		this.date.setLanguage(language);
+//		this.language = language;
+	}
+
+	public String model(){
+		return header() + body() + conclusion() + signature();
+	}
+	
+	protected String header(){
+		return "";
+	}
+	
+	protected String body(){
+		return "";
+	}
+	
+	protected String signature(){
+		return "";
+	}
+
+	protected String conclusion(){
+		return "";
+	}
+	
+	
+	
+	protected Person sender;
+	protected Person destinatary;
+	protected Address addressSender;
+	protected Address addressDestiny;
+	protected Date date;
+	protected Languages language;
+}

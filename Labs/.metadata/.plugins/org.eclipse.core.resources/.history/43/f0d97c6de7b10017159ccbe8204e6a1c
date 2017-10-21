@@ -1,0 +1,9 @@
+package ex1;
+
+public class Person {
+	Person(String name){
+		this.name = name;
+	}
+	
+	public String name;
+}

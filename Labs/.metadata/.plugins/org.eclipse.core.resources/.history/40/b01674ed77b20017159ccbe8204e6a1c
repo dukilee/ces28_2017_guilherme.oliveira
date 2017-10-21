@@ -1,0 +1,25 @@
+package letterElements;
+
+import date.Date;
+import date.DateEnglish;
+
+public class EnglishFactory extends AbstractFactory{
+	public Person createPerson(String firstName, String lastName){
+		return new PersonEnglish(firstName, lastName);
+	}
+	public Person createPerson(Person person){
+		return new PersonEnglish(person);
+	}
+	public Address createAddress(String address){
+		return new Address(address);
+	}
+	public Address createAddress(Address address){
+		return new Address(address);
+	}
+	public Date createDate(int month, int day, int year){
+		return new DateEnglish(month, day, year);
+	}
+	public Date createDate(Date date){
+		return new DateEnglish(date);
+	}
+}

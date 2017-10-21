@@ -1,0 +1,11 @@
+package letterElements;
+
+public class PersonFactory {
+	public Person constructPerson(String firstName, String lastName, Languages language){
+		if(language == Languages.PORTUGUESE)
+			return new PersonPortuguese(firstName, lastName);
+		if(language == Languages.JAPONESE)
+			return new PersonJaponese(firstName, lastName);
+		return new PersonEnglish(firstName, lastName);
+	}
+}

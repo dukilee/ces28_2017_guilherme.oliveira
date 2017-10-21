@@ -1,0 +1,7 @@
+package letterElements;
+
+public class PersonPtFactory extends PersonFactory{
+	public Person createPerson(String firstName, String lastName){
+		return new PersonPortugueses(firstName, lastName);
+	}
+}

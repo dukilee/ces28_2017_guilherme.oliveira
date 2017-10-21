@@ -1,0 +1,52 @@
+package letterElements;
+
+import lab.Languages;
+
+public class Person {
+	public Person(Person other){
+		firstName = other.getFirstName();
+		lastName = other.getLastName();
+	}
+	
+	public Person(String firstName, String lastName){
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.language = Languages.ENGLISH;
+	}
+	
+	public String getNameFormal(){
+		if(language == Languages.PORTUGUESE)
+			return "Sr. "+firstName + " " + lastName;
+		if(language == Languages.JAPONESE)
+			return lastName + "-san";
+		
+		//is english by default
+		return "Mr. "+lastName + ", " + firstName;
+	}
+	
+	public String getNameInformal(){
+		if(language == Languages.PORTUGUESE)
+			return firstName;
+		if(language == Languages.JAPONESE)
+			return lastName;
+		
+		//is english by default
+		return firstName;
+	}
+	
+	public String getFirstName(){
+		return firstName;
+	}
+	
+	public String getLastName(){
+		return lastName;
+	}
+	
+	public void setLanguage(Languages language){
+		this.language = language;
+	}
+	
+	private String firstName;
+	private String lastName;
+	private Languages language;
+}

@@ -1,0 +1,18 @@
+package letterElements;
+
+public abstract class AbstractFactory {
+	
+	public static final AbstractFactory getFactory(Languages language){
+		if(language == Languages.PORTUGUESE)
+			return new PersonPtFactory();
+		if(language == Languages.JAPONESE)
+			return new PersonJpFactory();
+		
+		//returns english by default
+		return new EnglishFactory();
+	}
+
+	public abstract Person createPerson(String firstName, String lastName);
+	public abstract Person createPerson(Person person);
+	public abstract Address createAddress(String address);
+}

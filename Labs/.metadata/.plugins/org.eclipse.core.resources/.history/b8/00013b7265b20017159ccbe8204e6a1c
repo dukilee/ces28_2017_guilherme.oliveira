@@ -1,0 +1,80 @@
+package ex1;
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+
+public class TestEx2 {
+	Address a1;
+	Address a2;
+	Date d;
+	Person p1;
+	Person p2;
+	Photo pho;
+	String m;
+	
+	@Before
+	public void setUp(){
+		a1 = new Address("Rua Astolfo Pinho, 422");
+		a2 = new Address("Av. Rodrigo Sampaio, 21");
+		d = new Date(12,20,2012);
+		p1 = new Person("Abelardo", "Barbosa");
+		p2 = new Person("Silvio", "Santos");
+		pho = new HeartPhoto();
+		m = "Love you";
+	}
+	
+	@Test
+	public void testFriendLetterInPortuguese() {
+		Languages lan = Languages.PORTUGUESE;
+		Writer w = new Writer(new FriendBuilder());
+		Letter cl = w.writeLetter(lan, p1, p2, a1, a2, d);
+		assertEquals(cl.model(), "Sr. Abelardo Barbosa\n"+
+								"Rua Astolfo Pinho, 422\n"+
+								"Sr. Silvio Santos\n"+
+								"Av. Rodrigo Sampaio, 21\n"+
+								"\n"+
+								"Hey, Silvio\n"+
+								"\n"+
+								"See ya\n"+
+								"20/12/2012\n");
+
+	}
+
+
+	@Test
+	public void testFriendLetterInJaponsese() {
+		Languages lan = Languages.JAPONESE;
+		Writer w = new Writer(new FriendBuilder());
+		Letter cl = w.writeLetter(lan, p1, p2, a1, a2, d);
+		assertEquals(cl.model(), "Barbosa-san\n"+
+								"Rua Astolfo Pinho, 422\n"+
+								"Santos-san\n"+
+								"Av. Rodrigo Sampaio, 21\n"+
+								"\n"+
+								"Hey, Santos\n"+
+								"\n"+
+								"See ya\n"+
+								"2012/12/20\n");
+		
+	}
+	@Test
+	public void testFriendLetterInEnglish() {
+		Languages lan = Languages.ENGLISH;
+		Writer w = new Writer(new FriendBuilder());
+		Letter cl = w.writeLetter(lan, p1, p2, a1, a2, d);
+		System.out.print(cl.model());
+		assertEquals(cl.model(), "Mr. Barbosa, Aberlardo\n"+
+								"Rua Astolfo Pinho, 422\n"+
+								"Mr. Santos, Silvio\n"+
+								"Av. Rodrigo Sampaio, 21\n"+
+								"\n"+
+								"Hey, Silvio\n"+
+								"\n"+
+								"See ya\n"+
+								"12/20/2012\n");
+
+	}
+	
+}

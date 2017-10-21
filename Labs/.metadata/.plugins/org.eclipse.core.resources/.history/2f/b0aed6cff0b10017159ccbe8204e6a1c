@@ -1,0 +1,12 @@
+package ex1;
+
+public class ComercialBuilder extends Builder{
+	@Override
+	public void constructLetter(Person sender, Person destinatary,
+			Address addressSender, Address addressDestiny, Date date,
+			Photo photo, String message) {
+		letter = new PostCardLetter(sender, destinatary, addressSender, addressDestiny);
+		
+	}
+	
+}

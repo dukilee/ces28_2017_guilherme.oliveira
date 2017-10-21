@@ -1,0 +1,15 @@
+package letterElements;
+
+public class DateEnglish extends Date{
+	public DateEnglish(int month, int day, int year){
+		super(month, day, year);
+	}
+	
+	public DateEnglish(Date other){
+		super(other);
+	}
+	
+	public String toPrint(){
+		return month + "/" + day + "/" + year;
+	}
+}

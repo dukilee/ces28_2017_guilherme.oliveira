@@ -1,0 +1,13 @@
+package ex1;
+
+public class Writer {
+	public Writer(Builder builder){
+		this.builder = builder;
+	}
+	
+	public Letter writeLetter(){
+		
+	}
+	
+	private Builder builder;
+}

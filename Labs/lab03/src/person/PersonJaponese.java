@@ -1,0 +1,23 @@
+package person;
+
+public class PersonJaponese extends Person{
+	public PersonJaponese(Person other){
+		super(other);
+	}
+	
+	public PersonJaponese(String firstName, String lastName){
+		super(firstName, lastName);
+	}
+	
+	public String getNameFormal(){
+		return lastName + "-san";
+	}
+	
+	public String getNameInformal(){
+		return lastName;
+	}
+	
+	public Person clone(){
+		return new PersonJaponese(firstName, lastName);
+	}
+}

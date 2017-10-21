@@ -1,0 +1,32 @@
+package letterElements;
+
+import letterElements.Address;
+import person.Person;
+import person.PersonJaponese;
+import date.Date;
+import date.DateJaponese;
+
+public class JaponeseFactory extends AbstractFactory{
+	public Person createPerson(String firstName, String lastName){
+		return new PersonJaponese(firstName, lastName);
+	}
+	public Person createPerson(Person person){
+		return new PersonJaponese(person);
+	}
+	public Address createAddress(String address){
+		return new Address(address);
+	}
+	
+	public Address createAddress(Address address){
+		return new Address(address);
+	}
+	
+	public Date createDate(int month, int day, int year){
+		return new DateJaponese(month, day, year);
+	}
+	
+	public Date createDate(Date date){
+		return new DateJaponese(date);
+	}
+	
+}

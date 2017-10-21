@@ -1,0 +1,5 @@
+package ex1;
+
+public abstract class Photo {
+	public abstract String toPrint();
+}

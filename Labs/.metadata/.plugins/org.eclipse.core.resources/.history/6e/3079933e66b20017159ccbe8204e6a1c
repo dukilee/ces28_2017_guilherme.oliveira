@@ -1,0 +1,47 @@
+package lab;
+
+import lab.Languages;
+
+public class Date {
+	public Date(Date d){
+		month = d.getMonth();
+		day = d.getDay();
+		year = d.getYear();
+		language = Languages.ENGLISH;
+	}
+	
+	public Date(int month, int day, int year){
+		this.month = month;
+		this.day = day;
+		this.year = year;
+		language = Languages.ENGLISH;
+	}
+	
+	public String toPrint(){
+		if(language == Languages.PORTUGUESE)
+			return day + "/" + month + "/" + year;
+		if(language == Languages.JAPONESE)
+			return year + "/" + month + "/" + day;
+		//language is english by default
+		return month + "/" + day + "/" + year;
+	}
+	
+	public int getMonth(){
+		return month;
+	}
+	
+	public int getDay(){
+		return day;
+	}
+	
+	public int getYear(){
+		return year;
+	}
+
+	public void setLanguage(Languages language){
+		this.language = language;
+	}
+	
+	private int month, day, year;
+	private Languages language;
+}

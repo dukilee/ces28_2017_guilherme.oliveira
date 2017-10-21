@@ -1,0 +1,13 @@
+package letterElements;
+
+public class PersonPtFactory extends AbstractFactory{
+	public Person createPerson(String firstName, String lastName){
+		return new PersonPortuguese(firstName, lastName);
+	}
+	public Person createPerson(Person person){
+		return new PersonPortuguese(person);
+	}
+	public Address createAddress(String address){
+		return new Address(address);
+	}
+}

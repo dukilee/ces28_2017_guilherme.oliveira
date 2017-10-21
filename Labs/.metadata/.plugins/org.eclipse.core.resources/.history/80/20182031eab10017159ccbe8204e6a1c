@@ -1,0 +1,13 @@
+package ex1;
+
+public class Date {
+	public Date(int value){
+		this.value = value;
+	}
+	
+	public int getValue(){
+		return value;
+	}
+	
+	private int value;
+}

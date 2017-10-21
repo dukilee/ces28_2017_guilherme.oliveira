@@ -1,0 +1,15 @@
+package lab;
+
+import letterElements.Address;
+
+public class ComercialBuilder extends Builder{
+	@Override
+	public Letter constructLetter(Languages language, Person sender, Person destinatary,
+			Address addressSender, Address addressDestiny, Date date,
+			Photo photo, String message) {
+		Letter l = new ComercialLetter(sender, destinatary, addressSender, addressDestiny, date);
+		l.setLanguage(language);
+		return l;
+	}
+	
+}

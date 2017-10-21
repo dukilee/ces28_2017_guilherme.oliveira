@@ -1,0 +1,20 @@
+package Q4.orig;
+
+import java.util.Iterator;
+
+public class RelatorioDespesas {
+	public void ImprimirRelatorio(Iterator<Despesa> despesas) {
+		Calculadora calculadora = new Calculadora();
+		float totalDespesa = calculadora.calculaTotal(despesas);
+		imprime(totalDespesa);
+		
+	}
+	public void imprime(float totalDespesa) {
+		String conteudo = "Relat�rio de Despesas";
+		conteudo+=("\n Total das despesas:" + totalDespesa);
+
+		SistemaOperacional so = new SistemaOperacional();
+		so.getDriverImpressao().Imprimir(conteudo);
+	}
+	
+}

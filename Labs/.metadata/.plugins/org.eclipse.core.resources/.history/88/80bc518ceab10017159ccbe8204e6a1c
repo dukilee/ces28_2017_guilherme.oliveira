@@ -1,0 +1,30 @@
+package ex1;
+
+public class ComercialLetter extends Letter{
+	public ComercialLetter(Person sender, Person destinatary,
+			Address addressDestiny, Date date) {
+		super(sender, destinatary, addressDestiny, date);
+	}
+	public String model(){
+		return header() + body() + conclusion() + signature();
+	}
+	
+	protected String header(){
+		return date.getValue() + "\n\n" + sender.getName() + "\n" +
+					sender.getName() + "\n" + destinatary.getName() +
+					addressDestiny.getValue() + "\n";
+	}
+	
+	protected String body(){
+		return "Dear "+destinatary.getName()+"\n";
+	}
+	
+	protected String conclusion(){
+		return "\nSincerely\n";
+	}
+	
+	protected String signature(){
+		return "\n\n                     _________________\n";
+	}
+
+}

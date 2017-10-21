@@ -1,0 +1,28 @@
+package letterElements;
+
+public abstract class Person {
+	public Person(Person other){
+		firstName = other.getFirstName();
+		lastName = other.getLastName();
+	}
+	
+	public Person(String firstName, String lastName){
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+	
+	public abstract String getNameFormal();
+	
+	public abstract String getNameInformal();
+	
+	public String getFirstName(){
+		return firstName;
+	}
+	
+	public String getLastName(){
+		return lastName;
+	}
+	
+	protected String firstName;
+	protected String lastName;
+}
