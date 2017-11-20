@@ -1,0 +1,35 @@
+package model;
+
+public class Interpolator {
+    private InterpolationMethod interpolationModel;
+    private final String CS_METHOD = "Cubic Spline";
+    private final String L_METHOD = "Lagrange";
+    private final String DEFAULT_METHOD = CS_METHOD;
+    
+	 public Interpolator() {       
+        bind();
+     }
+
+    public void bind() {
+        
+        interpolationModel = (InterpolationMethod) getMethod(DEFAULT_METHOD);
+    }
+
+	
+	// RESPONSABILITY: ESCOLHER O METODO DE INTERPOLACAO DESEJADO E CRIAR O OBJETO CORRESPONDENTE
+	public InterpolationMethod getMethod() { return interpolationModel; }
+    public InterpolationMethod getMethod(String method) {
+        switch (method) {
+            case L_METHOD:
+                interpolationModel = new Lagrange();
+                break;
+            case CS_METHOD:
+                interpolationModel = new CubicSpline();
+                break;
+            default:
+            	System.out.println("Unknown method " + method);
+        }
+
+        return interpolationModel;
+    }
+}
