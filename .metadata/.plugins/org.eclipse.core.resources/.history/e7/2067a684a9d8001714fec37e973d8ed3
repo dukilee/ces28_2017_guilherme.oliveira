@@ -1,0 +1,51 @@
+package utm_v1;
+
+import static org.mockito.Mockito.*;
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+
+public class Test {
+	private static final double EPS = 1e-7;
+	
+	
+	@org.junit.Test
+	public void testPositionConstructor() {
+		Position p = new Position();
+		assertTrue(p.x == 0);
+		assertTrue(p.y == 0);
+		assertTrue(p.z == 0);
+	
+		Position p2 = new Position(7.19, -1.15, 1);
+		assertTrue(Math.abs(p2.x-7.19)    < EPS);
+		assertTrue(Math.abs(p2.y-(-1.15)) < EPS);
+		assertTrue(Math.abs(p2.z-1)       < EPS);
+	}
+	
+	@org.junit.Test
+	public void testServerUpdate(){
+		Drone d1 = mock(Drone.class);
+		Drone d2 = mock(Drone.class);
+		when(d1.getStatus()).thenReturn(new Position(2, 3, 4));
+		when(d1.getStatus()).thenReturn(new Position(7, 8, 9));
+		
+		GCS g1 = new GCS(d1);
+		GCS g2 = new GCS(d2);
+		
+		Server s = new Server();
+		s.addDrone(d2);
+		s.addGCS(g2);
+		s.addDrone(d1);
+		s.addGCS(g1);
+		
+		s.update();
+		ArrayList<Position> saInfo = s.getSaInfo();
+		assertTrue(Math.abs(saInfo.get(0).x - 2)<EPS);
+		assertTrue(Math.abs(saInfo.get(0).y - 3)<EPS);
+		assertTrue(Math.abs(saInfo.get(0).z - 4)<EPS);
+
+		assertTrue(Math.abs(saInfo.get(1).x - 7)<EPS);
+		assertTrue(Math.abs(saInfo.get(1).y - 8)<EPS);
+		assertTrue(Math.abs(saInfo.get(1).z - 9)<EPS);
+	}
+}
